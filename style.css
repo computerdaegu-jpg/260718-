@@ -132,6 +132,40 @@ a {
   width: 100%;
 }
 
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* Hero */
 .hero {
   position: relative;
@@ -614,5 +648,178 @@ a {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* ---------- 반응형: 태블릿 (≤768px) ---------- */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 16px 24px rgba(20, 16, 43, 0.12);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+  }
+
+  .nav-links.is-open {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 1rem;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .hero {
+    min-height: 92vh;
+    padding: 3rem 1.25rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .tool-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- 반응형: 모바일 (최소 지원 너비) ---------- */
+@media (max-width: 480px) {
+  .nav {
+    padding: 0.85rem 1.25rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .hero {
+    min-height: 100vh;
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.85rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 12vw, 3rem);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .scroll-cue {
+    bottom: 1.25rem;
+  }
+
+  .section {
+    padding: 2.75rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+
+  .skill-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .modal-box {
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .modal-title {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-grid--3,
+  .tool-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .tool-icon {
+    font-size: 1.1rem;
+    border-radius: 14px;
+  }
+
+  .teaching-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-links .btn {
+    width: 100%;
+    text-align: center;
   }
 }

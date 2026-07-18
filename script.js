@@ -1,3 +1,26 @@
+// 모바일 내비게이션 토글
+(function initNavToggle() {
+  const toggle = document.getElementById("nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+  if (!toggle || !navLinks) return;
+
+  function closeNav() {
+    toggle.classList.remove("is-active");
+    navLinks.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  toggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("is-open");
+    toggle.classList.toggle("is-active", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeNav);
+  });
+})();
+
 // 스크롤 리빌 애니메이션
 (function initScrollReveal() {
   const revealEls = document.querySelectorAll(".reveal");
